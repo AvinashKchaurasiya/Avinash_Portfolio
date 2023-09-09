@@ -1,0 +1,20 @@
+<?php
+    session_start();
+    require_once("../../database/connection.php");
+    if(isset($_POST['add_tech']))
+    {
+        $tech=$_POST['technology'];
+        $Ins="INSERT INTO technology(technology) values('$tech')";
+        $query=mysqli_query($con,$Ins);
+        if($query)
+        {
+            $_SESSION['sms']=1;
+            header("Location:../technology");
+        }
+        else
+        {
+            $_SESSION['sms']=0;
+            header("Location:../add-technology");
+        }
+    }
+?>

@@ -20,7 +20,7 @@ require_once('database/connection.php');
 
     <!-- Hero Start -->
     <?php
-        require_once('intro.php');
+    require_once('intro.php');
     ?>
     <!-- Hero End -->
 
@@ -31,7 +31,7 @@ require_once('database/connection.php');
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="about-img" style="filter: drop-shadow(20px 20px 20px #222) !important;">
-                        <img src="img/profile.png" alt="Image" >
+                        <img src="img/profile.png" alt="Image">
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -99,7 +99,7 @@ require_once('database/connection.php');
                                 <div class="service-item">
 
                                     <div class="service-icon">
-                                        <img src="admin/code/services_icon/<?= $data['icon'];?>" width="100" height="100" alt/>
+                                        <img src="admin/code/services_icon/<?= $data['icon']; ?>" width="100" height="100" alt />
                                     </div>
                                     <div class="service-text">
                                         <h3><?= $data['service']; ?></h3>
@@ -126,32 +126,32 @@ require_once('database/connection.php');
             </header>
             <div class="timeline">
                 <?php
-                $sel = "SELECT * from experience limit 3";
+                $sel = "SELECT * from experience ORDER BY id DESC LIMIT 3";
                 $query = mysqli_query($con, $sel);
                 if ($query) {
                     if (mysqli_num_rows($query) > 0) {
                         while ($data = mysqli_fetch_assoc($query)) {
-                        ?>
+                ?>
                             <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
                                 <div class="timeline-text">
                                     <div class="timeline-date"><?= $data['start_time']; ?> - <?= $data['leave_time']; ?></div>
                                     <h2><?= $data['experience']; ?></h2>
                                     <h4><?= $data['company_name']; ?></h4>
-                                    <p>
+                                    <p style="text-align: justify;">
                                         <?= $data['details'] ?>
                                     </p>
                                 </div>
                             </div>
                         <?php
                         }
-                    }else{
+                    } else {
                         ?>
-                            <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-                                <div class="timeline-text">
-                                    <h2>I am Fresher</h2>
-                                </div>
+                        <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
+                            <div class="timeline-text">
+                                <h2>I am Fresher</h2>
                             </div>
-                        <?php
+                        </div>
+                <?php
                     }
                 }
                 ?>
@@ -186,7 +186,7 @@ require_once('database/connection.php');
                                     <p class="help-block"></p>
                                 </div>
                                 <div>
-                                    <button class="btn" type="submit" name="submit" value="Send Message" id="sendMessageButton" >Send Message</button>
+                                    <button class="btn" type="submit" name="submit" value="Send Message" id="sendMessageButton">Send Message</button>
                                 </div>
                             </form>
                         </div>
@@ -207,30 +207,27 @@ require_once('database/connection.php');
             </div>
             <div class="row">
                 <?php
-                    $sel="SELECT * FROM my_projects ORDER BY id DESC LIMIT 3 ";
-                    $query=mysqli_query($con,$sel);
-                    if($query)
-                    {
-                        if(mysqli_num_rows($query))
-                        {
-                            while($data=mysqli_fetch_assoc($query))
-                            {
-                                ?>
-                                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
-                                        <div class="portfolio-wrap">
-                                            <div class="portfolio-img">
-                                                <img src="admin/code/project-image/<?= $data['project_image'];?>" alt="Image">
-                                            </div>
-                                            <div class="portfolio-text">
-                                                <h3><a href="<?= $data['project_link'];?>" style="text-decoration:none; color:black;"><?= $data['project_name'] ;?></a></h3>
-                                                <a class="btn" href="<?= $data['project_link'];?>" data-lightbox="portfolio"><i class="bi bi-link-45deg"></i></a>
-                                            </div>
-                                        </div>
+                $sel = "SELECT * FROM my_projects ORDER BY id DESC LIMIT 3 ";
+                $query = mysqli_query($con, $sel);
+                if ($query) {
+                    if (mysqli_num_rows($query)) {
+                        while ($data = mysqli_fetch_assoc($query)) {
+                ?>
+                            <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
+                                <div class="portfolio-wrap">
+                                    <div class="portfolio-img">
+                                        <img src="admin/code/project-image/<?= $data['project_image']; ?>" alt="Image">
                                     </div>
-                                <?php
-                            }
+                                    <div class="portfolio-text">
+                                        <h3><a href="<?= $data['project_link']; ?>" style="text-decoration:none; color:black;"><?= $data['project_name']; ?></a></h3>
+                                        <a class="btn" href="<?= $data['project_link']; ?>" data-lightbox="portfolio"><i class="bi bi-link-45deg"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                <?php
                         }
                     }
+                }
 
                 ?>
             </div>
